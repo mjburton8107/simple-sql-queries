@@ -41,15 +41,48 @@ Now that we have some basic query examples.  Let's try doing some more complicat
 Use [www.sqlteaching.com](http://www.sqlteaching.com/) or [sqlbolt.com](http://sqlbolt.com/) as resources for the missing keywords you'll need.
 
 1. Find the average length of all tracks in Milliseconds
+  SELECT avg(Milliseconds) FROM Track
+  393599.2121039109
+
 2. Find the number of invoices in the USA
+SELECT count(*) FROM Invoice
+WHERE BillingCountry = 'USA'
+91
+
 3. Make a list of all the First Names of Customers that contain an 'a'
+SELECT FirstName FROM Customer
+WHERE FirstName LIKE "%a%"
+
 4. Make a list of the 10 longest tracks
+SELECT * FROM Track
+ORDER BY Milliseconds DESC
+LIMIT 10
+
 5. Make a list of the 20 shortest tracks
+SELECT * FROM Track
+ORDER BY Milliseconds ASC
+LIMIT 20
+
 6. Find all the customers that live in California or Washington
+SELECT * FROM Customer
+WHERE State IN ('CA', 'WA')
+
 7. Find all the customers that live in California, Washington, Utah, Florida, or Arizona (Use IN keyword)
+SELECT * FROM Customer
+WHERE State IN ('CA', 'WA', 'UT', 'FL', 'AZ')
+
 8. Insert an artist to the database
+INSERT INTO Artist (ArtistId, Name)
+VALUES (7777, 'Porter Robinson')
+
 9. Insert yourself as a customer to the database
-10. Find a list of all Playlists that start with `Classical` 
+INSERT INTO Customer (CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId)
+VALUES ('8107', 'Michael', 'Burton', 'M+I', '123 Nowhere', 'Salt Lake City', 'UT', 'USA', '84121', '801222222', '8012313212', 'mike@gmail.com', '001')
+
+10. Find a list of all Playlists that start with `Classical`
+SELECT * FROM Playlist
+WHERE Name LIKE "Classical%"
+
 11. You can either continue exploring this dataset or look into setting up postgres on your local machine.
 
 
